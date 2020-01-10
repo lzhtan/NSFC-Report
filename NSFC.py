@@ -6,10 +6,11 @@ def download(id):
         target = 'http://output.nsfc.gov.cn/report/61/'+str(id)+'_'+str(i)+'.png'
         print(i)
         req = requests.get(url=target, timeout=100)
-        img = req.content
-        dir = '../' + str(id) + '_' + str(i) + '.png'
-        with open(dir, 'wb') as f:
-            f.write(img)
+        if req.status_code == 200:
+            img = req.content
+            dir = '../自然基金结项项目下载文件夹/' + str(id) + '_' + str(i) + '.png'
+            with open(dir, 'wb') as f:
+                f.write(img)
         i += 1
 
 if __name__ == '__main__':
