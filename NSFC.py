@@ -3,7 +3,7 @@ import requests
 def download(id):
     i=1
     while i<=100:
-        target = 'http://output.nsfc.gov.cn/report/61/'+str(id)+'_'+str(i)+'.png'
+        target = 'http://output.nsfc.gov.cn/report/'+id[0:2]+'/'+str(id)+'_'+str(i)+'.png'
         print(i)
         req = requests.get(url=target, timeout=100)
         if req.status_code == 200:
